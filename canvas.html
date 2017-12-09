@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="foo">
+        <img id="show">
+    </div>
+    <script>
+        var c = document.createElement('canvas');
+        var ctx = c.getContext('2d');
+        c.width = 710;
+        c.height = 943;
+
+        ctx.rect(0,0,c.width, c.height);
+        ctx.fillStyle = '#0f0';
+        ctx.fill();
+
+        var img = new Image;
+        img.src = './image/s.jpg';
+        img.onload = function(){
+            ctx.drawImage(img, 0, 0, 700,933);
+            var img2 = new Image;
+            img2.src = './image/pic2.jpg';
+            img2.onload = function(){
+                ctx.drawImage(img2,70,733,150,150);
+                var base64 = c.toDataURL('image/jpg');
+                var img1 = document.getElementById('show');
+                img1.setAttribute('src', base64);
+            }
+        }
+    </script>
+</body>
+</html>      
