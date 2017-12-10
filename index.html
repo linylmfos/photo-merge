@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="700" height="933"></canvas>
+    <div id="picShow">
+        <img id="show">
+    </div>
+    <script>
+        // 获取canvas元素
+        var c = document.getElementById('myCanvas');
+        // 获取canvas画布绘图环境
+        var ctx =c.getContext('2d');
+        
+        //创建一个矩形画布
+        ctx.rect(0,0,700,933);
+        ctx.fillStyle="#FFF";
+        ctx.fill();
+
+        // 新建图片对象
+        var img = new Image;
+        img.src = './image/s.png';
+       // 加载图片
+        img.onload = function(){
+            ctx.drawImage(img,0,0,700,933);
+            var img2 = new Image;
+            img2.src='image/pic2.png';
+            img2.onload = function(){
+                ctx.drawImage(img2,200,500,150,150);
+                // var base64 = c.toDataURL('image/png');    
+                // var picShow = document.getElementById('show');
+                // picShow.setAttribute('src', base64);
+            }
+        }
+    </script>
+</body>
+</html>
