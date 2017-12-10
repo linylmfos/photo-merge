@@ -5,28 +5,30 @@
     <title>Document</title>
 </head>
 <body>
+    <canvas id="myCanvas" width="700" height="933"></canvas> 
     <div id="foo">
         <img id="show">
     </div>
     <script>
-        var c = document.createElement('canvas');
+        var c = document.getElementById('myCanvas');
         var ctx = c.getContext('2d');
-        c.width = 710;
-        c.height = 943;
+        // c.width = 700;
+        // c.height = 933;
 
-        ctx.rect(0,0,c.width, c.height);
+        ctx.rect(0,0,700, 933);
         ctx.fillStyle = '#0f0';
         ctx.fill();
 
         var img = new Image;
-        img.src = './image/s.jpg';
+        img.src = './image/s.png';
         img.onload = function(){
             ctx.drawImage(img, 0, 0, 700,933);
             var img2 = new Image;
-            img2.src = './image/pic2.jpg';
+            img2.src = './image/pic2.png';
             img2.onload = function(){
                 ctx.drawImage(img2,70,733,150,150);
-                var base64 = c.toDataURL('image/jpg');
+                var base64 = c.toDataURL('image/png');
+                console.log(base64);
                 var img1 = document.getElementById('show');
                 img1.setAttribute('src', base64);
             }
